@@ -24,6 +24,14 @@ module.exports = {
     'linebreak-style': 0,
     'react/state-in-constructor': 0,
     'import/prefer-default-export': 0,
+    semi: [
+      'error',
+      'never',
+    ],
+    quotes: [
+      'error',
+      'single',
+    ],
     'max-len': [
       2,
       550,
@@ -77,4 +85,4 @@ module.exports = {
       },
     ],
   },
-};
+}
