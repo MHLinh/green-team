@@ -1,1 +1,1 @@
-Green Team Project
+npm install --legacy-peer-deps
