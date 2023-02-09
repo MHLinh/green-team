@@ -32,6 +32,7 @@ module.exports = {
       'error',
       'single',
     ],
+    'jsx-quotes': ['error', 'prefer-single'],
     'max-len': [
       2,
       550,
