@@ -1,15 +1,15 @@
-import React from 'react';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, StackingColumnSeries, Tooltip } from '@syncfusion/ej2-react-charts';
+import React from 'react'
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, StackingColumnSeries, Tooltip } from '@syncfusion/ej2-react-charts'
 
-import { stackedCustomSeries, stackedPrimaryXAxis, stackedPrimaryYAxis } from '../../data/dummy';
-import { useStateContext } from '../../contexts/ContextProvider';
+import { stackedCustomSeries, stackedPrimaryXAxis, stackedPrimaryYAxis } from '../../data/dummy'
+import { useStateContext } from '../../contexts/ContextProvider'
 
 const Stacked = ({ width, height }) => {
-  const { currentMode } = useStateContext();
+  const { currentMode } = useStateContext()
 
   return (
     <ChartComponent
-      id="charts"
+      id='charts'
       primaryXAxis={stackedPrimaryXAxis}
       primaryYAxis={stackedPrimaryYAxis}
       width={width}
@@ -25,7 +25,7 @@ const Stacked = ({ width, height }) => {
         {stackedCustomSeries.map((item, index) => <SeriesDirective key={index} {...item} />)}
       </SeriesCollectionDirective>
     </ChartComponent>
-  );
-};
+  )
+}
 
-export default Stacked;
+export default Stacked
