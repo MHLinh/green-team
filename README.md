@@ -9,33 +9,398 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
 
 <details>
   <summary>1. airlineMostDelays</summary>
+
+  - Returns the top n airlines with a highest total delay in a specific time range.
+  - Suggested graphs: ???
+  - Example message: 
+  ```
+  {"action": "airlineMostDelays", "startDate": "2022-10-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "outbound": {
+        "total": [
+            [
+                "Airline with most total delay in time period",
+                "Total delay time (mins)"
+            ],
+            [
+                "EZY",
+                25618.0
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Airline",
+                "Total delay time in month (mins)"
+            ],
+            [
+                "2022-12",
+                "EZY",
+                25618.0
+            ],
+            [
+                "2022-12",
+                "FR",
+                19777.0
+            ],
+            ...
+        ]
+    },
+    "inbound": {
+        "total": [
+            [
+                "Airline with most total delay in time period",
+                "Total delay time (mins)"
+            ],
+            [
+                "EZY",
+                16207.0
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Airline",
+                "Total delay time in month (mins)"
+            ],
+            [
+                "2022-12",
+                "EZY",
+                16207.0
+            ],
+            [
+                "2022-12",
+                "FR",
+                14616.0
+            ],
+            ...
+        ]
+    }
+ }
+  ```
 </details>
 
 <details>
   <summary>2. averageDailyFlights</summary>
+  
+  - Returns the average number of flights per day per airline in a time period
+  - Suggested graphs: Bar chart, Calendar heat map
+  - Example message: 
+  ```
+  {"action": "averageDailyFlights", "startDate": "2022-10-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "outbound": {
+        "total": [
+            [
+                "Average daily outbound flights among all months"
+            ],
+            [
+                79.77
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Average daily outbound flights"
+            ],
+            [
+                [
+                    "2022-10",
+                    103.55
+                ],
+                [
+                    "2022-11",
+                    66.07
+                ],
+                [
+                    "2022-12",
+                    69.71
+                ]
+            ]
+        ]
+    },
+    "inbound:": {
+        "total": [
+            [
+                "Average daily inbound flights among all months"
+            ],
+            [
+                79.94
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Average daily inbound flights"
+            ],
+            [
+                [
+                    "2022-10",
+                    103.74
+                ],
+                [
+                    "2022-11",
+                    66.13
+                ],
+                [
+                    "2022-12",
+                    69.94
+                ]
+            ]
+        ]
+    }
+ }
+  ```
 </details>
 
 <details>
   <summary>3. averageDelayDaily</summary>
+
+  - Returns the average number flight delay in a time period.
+  - Suggested graphs: Bar chart, Calendar heat map
+  - Example message: 
+  ```
+  {"action": "averageDelayDaily", "startDate": "2022-12-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "outbound": {
+        "total": [
+            [
+                "Average delay of outbound flights over time period (in minutes)"
+            ],
+            [
+                29.76
+            ]
+        ],
+        "Date": [
+            [
+                "Date",
+                "Average delay of outbound flights on a given date (in minutes)"
+            ],
+            [
+                [
+                    "2022-12-01",
+                    23.55
+                ],
+                [
+                    "2022-12-02",
+                    32.49
+                ],
+                [
+                    "2022-12-03",
+                    15.18
+                ],
+                ...
+            ]
+        ]
+    },
+    "inbound": {
+        "total": [
+            [
+                "Average delay of inbound flights over time period (in minutes)"
+            ],
+            [
+                21.83
+            ]
+        ],
+        "Date": [
+            [
+                "Date",
+                "Average delay of inbound flights on a given date (in minutes)"
+            ],
+            [
+                [
+                    "2022-12-01",
+                    27.04
+                ],
+                [
+                    "2022-12-02",
+                    15.9
+                ],
+                [
+                    "2022-12-03",
+                    4.38
+                ],
+                ...
+            ]
+        ]
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>4. averageDelayMonthly</summary>
+
+  - Returns average monthly delay in time period.
+  - Suggested graphs: Bar chart
+  - Example message: 
+  ```
+  {"action": "averageDelayMonthly", "startDate": "2022-10-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "outbound": {
+        "total": [
+            [
+                "Total average delay of outbound flights over time period (minutes)"
+            ],
+            [
+                25.72
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Average delay of outbound flights in month"
+            ],
+            [
+                [
+                    "2022-10",
+                    1.3693
+                ],
+                [
+                    "2022-11",
+                    0.6157
+                ],
+                [
+                    "2022-12",
+                    2.3658
+                ]
+            ]
+        ]
+    },
+    "inbound": {
+        "total": [
+            [
+                "Total average delay of inbound flights over time period (minutes)"
+            ],
+            [
+                17.82
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Average delay of inbound flights in month"
+            ],
+            [
+                [
+                    "2022-10",
+                    5.9456
+                ],
+                [
+                    "2022-11",
+                    7.6164
+                ],
+                [
+                    "2022-12",
+                    7.2016
+                ]
+            ]
+        ]
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>5. averageKeysDaily</summary>
+
+  - Returns average daily number of keys over a given time period.
+  - Example message: 
+  ```
+  {"action": "averageKeysDaily", "startDate": "2022-12-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "total": [
+        [
+            "Average total keys among all dates"
+        ],
+        [
+            5.61373
+        ]
+    ],
+    "month": [
+        [
+            "Date",
+            "Average total keys"
+        ],
+        [
+            [
+                "2022-12-02",
+                6.97
+            ],
+            [
+                "2022-12-03",
+                6.71
+            ],
+            ...
+        ]
+    ]
+  }
+  ```
 </details>
 
 <details>
   <summary>6. averageKeysMonthly</summary>
+
+  - Returns average monthly number of keys over a given time period.
+  - Example message: 
+  ```
+  {"action": "averageKeysMonthly", "startDate": "2022-10-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "total": [
+        [
+            "Average total keys among all months"
+        ],
+        [
+            6.8386
+        ]
+    ],
+    "month": [
+        [
+            "Month",
+            "Average total keys"
+        ],
+        [
+            [
+                "2022-10",
+                8.41
+            ],
+            [
+                "2022-11",
+                6.39
+            ],
+            [
+                "2022-12",
+                5.72
+            ]
+        ]
+    ]
+  }
+  ```
 </details>
 
 <details>
   <summary>7. bookingMetricsDaily</summary>
   
-  - Returns total number bookings made, bookings started, bookings ended, bookings started and ended in a given date range.
-  - Returns the number bookings made, bookings started, bookings ended on a given date in a given date range.
+  - Returns total number bookings made, bookings started, bookings ended, bookings started and ended in a given time period.
+  - Returns the number bookings made, bookings started, bookings ended on a given date in a given time period.
   - Suggested graphs: Bar chart, Calendar heat map
   - Example message: 
   ```
@@ -46,10 +411,10 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
   {
     "total": [
         [
-            "Total bookings made in date range",
-            "Total bookings started in date range",
-            "Total bookings ended in date range",
-            "Total bookings started and ended in date range"
+            "Total bookings made in time period",
+            "Total bookings started in time period",
+            "Total bookings ended in time period",
+            "Total bookings started and ended in time period"
         ],
         [
             10857,
@@ -84,6 +449,7 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
             409
         ],
         ...
+    ]
   }
   ```
 </details>
@@ -92,8 +458,8 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
   <summary>8. bookingMetricsMonthly</summary>
   
   
-  - Returns total number bookings made, bookings started, bookings ended, bookings started and ended in a given date range.
-  - Returns the number bookings made, bookings started, bookings ended, bookings started and ended in a given month in a given date range.
+  - Returns total number bookings made, bookings started, bookings ended, bookings started and ended in a given time period.
+  - Returns the number bookings made, bookings started, bookings ended, bookings started and ended in a given month in a given time period.
   - Suggested graphs: Bar chart
   - Example message: 
   ```
@@ -104,10 +470,10 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
  {
     "total": [
         [
-            "Total bookings made in date range",
-            "Total bookings started in date range",
-            "Total bookings ended in date range",
-            "Total bookings started and ended in date range"
+            "Total bookings made in time period",
+            "Total bookings started in time period",
+            "Total bookings ended in time period",
+            "Total bookings started and ended in time period"
         ],
         [
             183005,
@@ -153,17 +519,155 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
 
 <details>
   <summary>9. busiestDaysValet</summary>
+
+  - Returns daily total number of keys pulled and in a given time period.
+  - Suggested graphs: Bar chart, Calendar heat map
+  - Example message: 
+  ```
+  {"action": "busiestDaysValet", "startDate": "2022-12-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "pulled": {
+        "total": [
+            [
+                "Total pulled keys among all dates"
+            ],
+            [
+                6063.0
+            ]
+        ],
+        "month": [
+            [
+                "Date",
+                "Total pulled keys"
+            ],
+            [
+                [
+                    "2022-12-02",
+                    304.0
+                ],
+                [
+                    "2022-12-03",
+                    320.0
+                ],
+                ...
+            ]
+        ]
+    },
+    "blocked": {
+        "total": [
+            [
+                "Total blocked keys among all dates"
+            ],
+            [
+                11404.0
+            ]
+        ],
+        "month": [
+            [
+                "Date",
+                "Total blocked keys"
+            ],
+            [
+                [
+                    "2022-12-02",
+                    414.0
+                ],
+                [
+                    "2022-12-03",
+                    411.0
+                ],
+                ...
+            ]
+        ]
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>10. busiestMonthsValet</summary>
+
+  - Returns monthly total number of keys pulled and in a given time period.
+  - Suggested graphs: Bar chart, Calendar heat map
+  - Example message: 
+  ```
+  {"action": "busiestMonthsValet", "startDate": "2022-10-01T00:00:00", "endDate": "2022-12-31T23:59:59"}
+  ```
+  - Example response:
+  ```
+  {
+    "pulled": {
+        "total": [
+            [
+                "Total keys among all months"
+            ],
+            [
+                47485.0
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Total keys"
+            ],
+            [
+                [
+                    "2022-10",
+                    29925.0
+                ],
+                [
+                    "2022-11",
+                    11497.0
+                ],
+                [
+                    "2022-12",
+                    6063.0
+                ]
+            ]
+        ]
+    },
+    "blocked": {
+        "total": [
+            [
+                "Total keys among all months"
+            ],
+            [
+                47485.0
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Total keys"
+            ],
+            [
+                [
+                    "2022-10",
+                    29925.0
+                ],
+                [
+                    "2022-11",
+                    11497.0
+                ],
+                [
+                    "2022-12",
+                    6063.0
+                ]
+            ]
+        ]
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>11. cancellationDaily</summary>
   
-  - Returns total number and rate of cancelled bookings made, bookings started, bookings ended, bookings started and ended in a given date range.
-  - Returns the number and rate of cancelled bookings made, bookings started, bookings ended on a given date in a given date range.
+  - Returns total number and rate of cancelled bookings made, bookings started, bookings ended, bookings started and ended in a given time period.
+  - Returns the number and rate of cancelled bookings made, bookings started, bookings ended on a given date in a given time period.
   - Suggested graphs: Bar chart, Calendar heat map
   - Example message: 
   ```
@@ -174,10 +678,10 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
   {
     "totalCancelled": [
         [
-            "Total cancelled bookings made in date range",
-            "Total cancelled bookings started in date range",
-            "Total cancelled bookings ended in date range",
-            "Total cancelled bookings started and ended in date range"
+            "Total cancelled bookings made in time period",
+            "Total cancelled bookings started in time period",
+            "Total cancelled bookings ended in time period",
+            "Total cancelled bookings started and ended in time period"
         ],
         [
             476,
@@ -188,10 +692,10 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
     ],
     "totalRates": [
         [
-            "Rate of total cancelled bookings made in date range",
-            "Rate of total cancelled bookings started in date range",
-            "Rate of total cancelled bookings ended in date range",
-            "Rate of total cancelled bookings started and ended in date range"
+            "Rate of total cancelled bookings made in time period",
+            "Rate of total cancelled bookings started in time period",
+            "Rate of total cancelled bookings ended in time period",
+            "Rate of total cancelled bookings started and ended in time period"
         ],
         [
             0.044,
@@ -261,8 +765,8 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
 <details>
   <summary>12. cancellationMonthly</summary>
   
-  - Returns total number and rate of cancelled bookings made, bookings started, bookings ended, bookings started and ended in a given date range.
-  - Returns the number and rate of cancelled bookings made, bookings started, bookings ended, bookings started and ended in a given month in a given date range.
+  - Returns total number and rate of cancelled bookings made, bookings started, bookings ended, bookings started and ended in a given time period.
+  - Returns the number and rate of cancelled bookings made, bookings started, bookings ended, bookings started and ended in a given month in a given time period.
   - Suggested graphs: Bar chart
   - Example message: 
   ```
@@ -273,10 +777,10 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
   {
     "totalCancelled": [
         [
-            "Total cancelled bookings made in date range",
-            "Total cancelled bookings started in date range",
-            "Total cancelled bookings ended in date range",
-            "Total cancelled bookings started and ended in date range"
+            "Total cancelled bookings made in time period",
+            "Total cancelled bookings started in time period",
+            "Total cancelled bookings ended in time period",
+            "Total cancelled bookings started and ended in time period"
         ],
         [
             9469,
@@ -287,10 +791,10 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
     ],
     "totalRates": [
         [
-            "Rate of total cancelled bookings made in date range",
-            "Rate of total cancelled bookings started in date range",
-            "Rate of total cancelled bookings ended in date range",
-            "Rate of total cancelled bookings started and ended in date range"
+            "Rate of total cancelled bookings made in time period",
+            "Rate of total cancelled bookings started in time period",
+            "Rate of total cancelled bookings ended in time period",
+            "Rate of total cancelled bookings started and ended in time period"
         ],
         [
             0.052,
@@ -368,7 +872,7 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
 <details>
   <summary>13. inAdvanceDaily</summary>
   
-  - Returns daily average number of days in advance bookings are made for bookings made and bookings started in given date range.
+  - Returns daily average number of days in advance bookings are made for bookings made and bookings started in given time period.
   - Suggested graphs: Bar chart, Calendar heat map
   - Example message: 
   ```
@@ -417,7 +921,7 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
  <details>
   <summary>14. inAdvanceMonthly</summary>
     
-  - Returns monthly average number of days in advance bookings are made for bookings made and bookings started in given date range.
+  - Returns monthly average number of days in advance bookings are made for bookings made and bookings started in given time period.
   - Suggested graphs: Bar chart
   - Example message: 
   ```
@@ -458,6 +962,7 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
             43.0
         ],
         ...
+    ]
   }
   ```
 </details>
@@ -519,8 +1024,8 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
     ],
     "stayAverage": [
         [
-            "Average stay of bookings made in given date range",
-            "Average stay of bookings started in given date range"
+            "Average stay of bookings made in time period",
+            "Average stay of bookings started in time period"
         ],
         [
             7.43,
@@ -607,8 +1112,8 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
     ],
     "stayAverage": [
         [
-            "Average stay of bookings made in given date range",
-            "Average stay of bookings started in given date range"
+            "Average stay of bookings made in time period",
+            "Average stay of bookings started in time period"
         ],
         [
             8.21,
@@ -648,12 +1153,242 @@ wss://50heid0mqj.execute-api.eu-west-1.amazonaws.com/production
 
 <details>
   <summary>18. totalDelayDaily</summary>
+
+  - Returns the total daily delay in a time period.
+  - Suggested graphs: Bar chart, Calendar heat map
+  - Example message: 
+  ```
+  {"action": "totalDelayDaily", "startDate": "2022-12-01T00:00:00", "endDate": "2023-01-01T00:00:00"}
+  ```
+  - Example response:
+  ```
+  {
+    "outbound": {
+        "total": [
+            [
+                "Total delay of outbound flights over time period (in minutes)"
+            ],
+            [
+                922.57
+            ]
+        ],
+        "Date": [
+            [
+                "Date",
+                "Total delay of outbound flights on given date (in minutes)"
+            ],
+            [
+                [
+                    "2022-12-01",
+                    23.55
+                ],
+                [
+                    "2022-12-02",
+                    32.49
+                ],
+                [
+                    "2022-12-03",
+                    15.18
+                ],
+                ...
+            ]
+        ]
+    },
+    "inbound": {
+        "total": [
+            [
+                "Total delay of inbound flights over time period (in minutes)"
+            ],
+            [
+                676.62
+            ]
+        ],
+        "Date": [
+            [
+                "Date",
+                "Total delay of inbound flights on given date (in minutes)"
+            ],
+            [
+                [
+                    "2022-12-01",
+                    27.04
+                ],
+                [
+                    "2022-12-02",
+                    15.9
+                ],
+                [
+                    "2022-12-03",
+                    4.38
+                ],
+                ...
+            ]
+        ]
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>19. totalDelayMonthly</summary>
+
+  - Returns total monthly delay in a time period.
+  - Suggested graphs: Bar chart
+  - Example message: 
+  ```
+  {"action": "totalDelayMonthly", "startDate": "2022-10-01T00:00:00", "endDate": "2023-01-01T00:00:00"}
+  ```
+  - Example response:
+  ```
+  {
+    "outbound": {
+        "total": [
+            [
+                "Total delay of outbound flights over time period (in minutes)"
+            ],
+            [
+                922.57
+            ]
+        ],
+        "Date": [
+            [
+                "Date",
+                "Total delay of outbound flights on given date (in minutes)"
+            ],
+            [
+                [
+                    "2022-12-01",
+                    23.55
+                ],
+                [
+                    "2022-12-02",
+                    32.49
+                ],
+                [
+                    "2022-12-03",
+                    15.18
+                ],
+                ...
+            ]
+        ]
+    },
+    "inbound": {
+        "total": [
+            [
+                "Total delay of inbound flights over time period (in minutes)"
+            ],
+            [
+                676.62
+            ]
+        ],
+        "Date": [
+            [
+                "Date",
+                "Total delay of inbound flights on given date (in minutes)"
+            ],
+            [
+                [
+                    "2022-12-01",
+                    27.04
+                ],
+                [
+                    "2022-12-02",
+                    15.9
+                ],
+                [
+                    "2022-12-03",
+                    4.38
+                ],
+                ...
+            ]
+        ]
+    }
+  }
+  ```
 </details>
 
 <details>
   <summary>20. totalFlightsAirline</summary>
+
+  - Returns total number of flights per airline (departing or arriving).
+  - Suggested graphs: ???
+  - Example message: 
+  ```
+  {"action": "totalFlightsAirline", "startDate": "2022-12-01T00:00:00", "endDate": "2023-01-01T00:00:00"}
+  ```
+  - Example response:
+  ```
+  {
+    "outbound": {
+        "total": [
+            [
+                "Total flights among all months"
+            ],
+            [
+                2161.0
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Airline",
+                "Total monthly flights"
+            ],
+            [
+                [
+                    "2022-12",
+                    "EZY",
+                    1062.0
+                ],
+                [
+                    "2022-12",
+                    "FR",
+                    412.0
+                ],
+                [
+                    "2022-12",
+                    "LS",
+                    91.0
+                ],
+                ...
+            ]
+        ]
+    },
+    "inbound": {
+        "total": [
+            [
+                "Total flights among all months"
+            ],
+            [
+                2168.0
+            ]
+        ],
+        "month": [
+            [
+                "Month",
+                "Airline",
+                "Total monthly flights"
+            ],
+            [
+                [
+                    "2022-12",
+                    "EZY",
+                    1062.0
+                ],
+                [
+                    "2022-12",
+                    "FR",
+                    417.0
+                ],
+                [
+                    "2022-12",
+                    "LS",
+                    91.0
+                ],
+                ...
+            ]
+        ]
+    }
+ }
+  ```
 </details>
